@@ -22,4 +22,7 @@ public interface AccommodationApplicationService {
     void deleteById(Long id);
 
     Optional<DisplayAccomodationDto> addReview(Long id,  CreateReviewDto reviewDto);
+
+    List<DisplayAccomodationDto> searchBy(String name, String category, Long hostId, Integer numOfRooms);
+
 }

@@ -76,4 +76,15 @@ public class AccommodationController {
         return accommodationApplicationService.addReview(id, reviewDto);
     }
 
+    @GetMapping("/search")
+    @Operation(summary = "Search accommodations by name, category, host, or number of rooms")
+    public List<DisplayAccomodationDto> search(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) Long hostId,
+            @RequestParam(required = false) Integer numRooms
+    ) {
+        return accommodationApplicationService.searchBy(name, category, hostId, numRooms);
+    }
+
 }

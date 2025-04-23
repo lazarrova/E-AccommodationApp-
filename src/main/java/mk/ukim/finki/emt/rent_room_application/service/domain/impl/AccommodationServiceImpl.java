@@ -86,5 +86,15 @@ public class AccommodationServiceImpl implements AccommodationService {
         return Optional.of(accomodationRepository.save(accommodation));
     }
 
+    @Override
+    public List<Accommodation> search(String name, String category, Long hostId, Integer numRooms) {
+        return accomodationRepository.findAll().stream()
+                .filter(a -> name == null || a.getName().toLowerCase().contains(name.toLowerCase()))
+                .filter(a -> category == null || a.getCategory().name().equalsIgnoreCase(category))
+                .filter(a -> hostId == null || a.getHost().getId().equals(hostId))
+                .filter(a -> numRooms == null || a.getNumRooms().equals(numRooms))
+                .toList();
+    }
+
 
 }

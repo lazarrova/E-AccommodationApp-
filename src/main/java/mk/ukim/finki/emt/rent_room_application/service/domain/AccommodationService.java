@@ -22,4 +22,8 @@ public interface AccommodationService {
     void deleteById(Long id);
 
     Optional<Accommodation>addReview(Long id, Review review);
+
+    List<Accommodation> search(String name, String category, Long hostId, Integer numRooms);
+
+
 }

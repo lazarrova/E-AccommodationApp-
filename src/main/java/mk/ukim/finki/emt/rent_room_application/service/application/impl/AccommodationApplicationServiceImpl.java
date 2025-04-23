@@ -3,6 +3,7 @@ package mk.ukim.finki.emt.rent_room_application.service.application.impl;
 import mk.ukim.finki.emt.rent_room_application.dto.CreateAccomodationDto;
 import mk.ukim.finki.emt.rent_room_application.dto.CreateReviewDto;
 import mk.ukim.finki.emt.rent_room_application.dto.DisplayAccomodationDto;
+import mk.ukim.finki.emt.rent_room_application.model.domain.Accommodation;
 import mk.ukim.finki.emt.rent_room_application.model.domain.Host;
 import mk.ukim.finki.emt.rent_room_application.model.domain.Review;
 import mk.ukim.finki.emt.rent_room_application.service.application.AccommodationApplicationService;
@@ -88,4 +89,12 @@ public class AccommodationApplicationServiceImpl implements AccommodationApplica
                     .orElse(null);
         });
     }
+
+    @Override
+    public List<DisplayAccomodationDto> searchBy(String name, String category, Long hostId, Integer numOfRooms) {
+        List<Accommodation> results = accommodationService.search(name, category, hostId, numOfRooms);
+        return results.stream().map(DisplayAccomodationDto::from).toList();
+    }
+
+
 }
