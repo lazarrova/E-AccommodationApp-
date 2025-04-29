@@ -28,7 +28,7 @@ CREATE TABLE accommodation
 );
 
 
-create table shop_users
+create table users
 (
     username                   varchar(255)
         primary key,
@@ -67,7 +67,7 @@ CREATE TABLE temporary_reservation_accommodations
 );
 
 
-create index idx_cart_user_status on shopping_cart (user_username, status);
-create index idx_user_username_password on shop_users (username, password);
-create index idx_user_username on shop_users (username);
-create index idx_user_role on shop_users (role);
+create index idx_cart_user_status on temporary_reservation (user_id);
+create index idx_user_username_password on users (username, password);
+create index idx_user_username on users (username);
+create index idx_user_role on users (role);

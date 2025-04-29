@@ -1,4 +1,4 @@
-package mk.ukim.finki.emt.rent_room_application.web;
+package mk.ukim.finki.emt.rent_room_application.web.controllers;
 
 
 import io.swagger.v3.oas.annotations.Operation;

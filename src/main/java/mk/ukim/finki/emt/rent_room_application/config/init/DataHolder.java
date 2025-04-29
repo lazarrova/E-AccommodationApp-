@@ -1,4 +1,4 @@
-package mk.ukim.finki.emt.rent_room_application.config;
+package mk.ukim.finki.emt.rent_room_application.config.init;
 
 import jakarta.annotation.PostConstruct;
 

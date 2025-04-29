@@ -1,4 +1,4 @@
-package mk.ukim.finki.emt.rent_room_application.sequrity;
+package mk.ukim.finki.emt.rent_room_application.web.filters;
 
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
@@ -6,6 +6,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
+import mk.ukim.finki.emt.rent_room_application.constants.JwtConstants;
+import mk.ukim.finki.emt.rent_room_application.helpers.JwtHelper;
 import mk.ukim.finki.emt.rent_room_application.model.domain.User;
 import mk.ukim.finki.emt.rent_room_application.service.domain.UserService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,4 +1,4 @@
-package mk.ukim.finki.emt.rent_room_application.sequrity;
+package mk.ukim.finki.emt.rent_room_application.constants;
 
 
 public class JwtConstants {

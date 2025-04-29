@@ -6,6 +6,8 @@ import mk.ukim.finki.emt.rent_room_application.repository.AccomodationRepository
 import mk.ukim.finki.emt.rent_room_application.service.domain.AccommodationService;
 import mk.ukim.finki.emt.rent_room_application.service.domain.HostService;
 import mk.ukim.finki.emt.rent_room_application.service.domain.ReviewService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,9 +27,14 @@ public class AccommodationServiceImpl implements AccommodationService {
 
     @Override
     public List<Accommodation> findAll() {
-        return this.accomodationRepository.findAll();
-
+        return accomodationRepository.findAll();
     }
+
+    @Override
+    public Page<Accommodation> findAll(Pageable pageable) {
+        return this.accomodationRepository.findAll(pageable);
+    }
+
 
     @Override
     public Optional<Accommodation> findById(Long id) {

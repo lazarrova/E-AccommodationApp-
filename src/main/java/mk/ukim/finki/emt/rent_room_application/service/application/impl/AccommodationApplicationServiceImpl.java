@@ -10,12 +10,16 @@ import mk.ukim.finki.emt.rent_room_application.service.application.Accommodation
 import mk.ukim.finki.emt.rent_room_application.service.domain.AccommodationService;
 import mk.ukim.finki.emt.rent_room_application.service.domain.HostService;
 import mk.ukim.finki.emt.rent_room_application.service.domain.ReviewService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+
+
 public class AccommodationApplicationServiceImpl implements AccommodationApplicationService {
     private final AccommodationService accommodationService;
     private final HostService hostService;
@@ -27,11 +31,6 @@ public class AccommodationApplicationServiceImpl implements AccommodationApplica
         this.reviewService = reviewService;
     }
 
-    @Override
-    public List<DisplayAccomodationDto> findAll() {
-        return accommodationService.findAll().stream().map(DisplayAccomodationDto::from).toList();
-
-    }
 
     @Override
     public Optional<DisplayAccomodationDto> findById(Long id) {
@@ -94,6 +93,16 @@ public class AccommodationApplicationServiceImpl implements AccommodationApplica
     public List<DisplayAccomodationDto> searchBy(String name, String category, Long hostId, Integer numOfRooms) {
         List<Accommodation> results = accommodationService.search(name, category, hostId, numOfRooms);
         return results.stream().map(DisplayAccomodationDto::from).toList();
+    }
+
+    @Override
+    public List<DisplayAccomodationDto> findAll() {
+        return this.accommodationService.findAll().stream().map(DisplayAccomodationDto::from).toList();
+    }
+
+    @Override
+    public Page<DisplayAccomodationDto> findAll(Pageable pageable) {
+      return this.accommodationService.findAll(pageable).map(DisplayAccomodationDto::from); //ne koristime stream() bidejki se gubi paginacijata
     }
 
 

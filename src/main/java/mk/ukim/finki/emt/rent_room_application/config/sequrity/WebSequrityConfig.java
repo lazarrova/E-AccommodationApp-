@@ -1,6 +1,7 @@
-package mk.ukim.finki.emt.rent_room_application.config;
+package mk.ukim.finki.emt.rent_room_application.config.sequrity;
 
 
+import mk.ukim.finki.emt.rent_room_application.sequrity.CustomUsernamePasswordAuthenticationProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

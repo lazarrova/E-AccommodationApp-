@@ -1,7 +1,8 @@
-package mk.ukim.finki.emt.rent_room_application.sequrity;
+package mk.ukim.finki.emt.rent_room_application.config.sequrity;
 
 
-import mk.ukim.finki.emt.rent_room_application.config.CustomUsernamePasswordAuthenticationProvider;
+import mk.ukim.finki.emt.rent_room_application.sequrity.CustomUsernamePasswordAuthenticationProvider;
+import mk.ukim.finki.emt.rent_room_application.web.filters.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

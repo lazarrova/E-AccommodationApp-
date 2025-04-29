@@ -5,7 +5,7 @@ import mk.ukim.finki.emt.rent_room_application.dto.DisplayUserDto;
 import mk.ukim.finki.emt.rent_room_application.dto.LoginResponseDto;
 import mk.ukim.finki.emt.rent_room_application.dto.LoginUserDto;
 import mk.ukim.finki.emt.rent_room_application.model.domain.User;
-import mk.ukim.finki.emt.rent_room_application.sequrity.JwtHelper;
+import mk.ukim.finki.emt.rent_room_application.helpers.JwtHelper;
 import mk.ukim.finki.emt.rent_room_application.service.application.UserApplicationService;
 import mk.ukim.finki.emt.rent_room_application.service.domain.UserService;
 import org.springframework.stereotype.Service;

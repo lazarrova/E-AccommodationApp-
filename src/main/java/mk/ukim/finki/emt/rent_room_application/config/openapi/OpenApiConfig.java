@@ -1,4 +1,4 @@
-package mk.ukim.finki.emt.rent_room_application.config;
+package mk.ukim.finki.emt.rent_room_application.config.openapi;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
