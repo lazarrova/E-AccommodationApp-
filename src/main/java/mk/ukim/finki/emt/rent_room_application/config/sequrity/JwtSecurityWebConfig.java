@@ -65,9 +65,11 @@ public class JwtSecurityWebConfig {
                                         "api/user/login",
                                         "api/user/register"
                                 )
-                                .hasAnyRole("USER", "ADMIN")
+                                .permitAll()
+                             //   .hasAnyRole("ROLE_USER", "ROLE_ADMIN")
                                 .anyRequest()
-                                .hasRole("ADMIN")
+                                .permitAll()
+                            ///    .hasRole("ADMIN")
                 )
                 .sessionManagement(sessionManagementConfigurer ->
                         sessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS)

@@ -18,19 +18,19 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     Optional<User> findByUsername(String username);
 
-    @EntityGraph(
-            type = EntityGraph.EntityGraphType.FETCH,
-            attributePaths = {"carts"}
-    )
-    @Query("select u from User u")
-    List<User> fetchAll();
+//    @EntityGraph(
+//            type = EntityGraph.EntityGraphType.FETCH,
+//            attributePaths = {"carts"}
+//    )
+//    @Query("select u from User u")
+//    List<User> fetchAll();
 
     @EntityGraph(
             type = EntityGraph.EntityGraphType.LOAD,
-            attributePaths = {"carts"}
+            attributePaths = {"hosts","countries","accommodations" } // празно: не се наведува "temporaryReservations"
     )
-    @Query("select u from User u")
-    List<User> loadAll();
+    @Query("SELECT u FROM User u")
+    List<User> findAll();
 
     UserProjection findByRole(Role role);
 

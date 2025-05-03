@@ -2,6 +2,7 @@ package mk.ukim.finki.emt.rent_room_application.service.domain.impl;
 
 import mk.ukim.finki.emt.rent_room_application.model.domain.Accommodation;
 import mk.ukim.finki.emt.rent_room_application.model.domain.Review;
+import mk.ukim.finki.emt.rent_room_application.repository.AccommodationPerHostViewRepository;
 import mk.ukim.finki.emt.rent_room_application.repository.AccomodationRepository;
 import mk.ukim.finki.emt.rent_room_application.service.domain.AccommodationService;
 import mk.ukim.finki.emt.rent_room_application.service.domain.HostService;
@@ -18,11 +19,13 @@ public class AccommodationServiceImpl implements AccommodationService {
     private final AccomodationRepository accomodationRepository;
     private final HostService hostService;
     private final ReviewService reviewService;
+    private final AccommodationPerHostViewRepository accommodationPerHostViewRepository;
 
-    public AccommodationServiceImpl(AccomodationRepository accomodationRepository, HostService hostService, ReviewService reviewService) {
+    public AccommodationServiceImpl(AccomodationRepository accomodationRepository, HostService hostService, ReviewService reviewService, AccommodationPerHostViewRepository accommodationPerHostViewRepository) {
         this.accomodationRepository = accomodationRepository;
         this.hostService = hostService;
         this.reviewService = reviewService;
+        this.accommodationPerHostViewRepository = accommodationPerHostViewRepository;
     }
 
     @Override
@@ -102,6 +105,12 @@ public class AccommodationServiceImpl implements AccommodationService {
                 .filter(a -> numRooms == null || a.getNumRooms().equals(numRooms))
                 .toList();
     }
+
+    @Override
+    public void refreshMaterializedView() {
+        accommodationPerHostViewRepository.refreshMaterializedView();
+    }
+
 
 
 }

@@ -1,6 +1,8 @@
 package mk.ukim.finki.emt.rent_room_application.service.domain.impl;
 
 import mk.ukim.finki.emt.rent_room_application.model.domain.Host;
+//import mk.ukim.finki.emt.rent_room_application.repository.HostByCountryViewRepository;
+import mk.ukim.finki.emt.rent_room_application.repository.HostPerCountryViewRepository;
 import mk.ukim.finki.emt.rent_room_application.repository.HostRepository;
 import mk.ukim.finki.emt.rent_room_application.service.domain.HostService;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,11 @@ import java.util.Optional;
 @Service
 public class HostServiceImpl implements HostService {
     private final HostRepository hostRepository;
+   private final HostPerCountryViewRepository hostPerCountryViewRepository;
 
-    public HostServiceImpl(HostRepository hostRepository) {
+    public HostServiceImpl(HostRepository hostRepository, HostPerCountryViewRepository hostPerCountryViewRepository) {
         this.hostRepository = hostRepository;
+        this.hostPerCountryViewRepository = hostPerCountryViewRepository;
     }
 
     @Override
@@ -51,6 +55,12 @@ public class HostServiceImpl implements HostService {
     @Override
     public void deleteById(Long id) {
         this.hostRepository.deleteById(id);
+
+    }
+
+    @Override
+    public void refreshMaterializedView() {
+        hostPerCountryViewRepository.refreshMaterializedView();
 
     }
 }

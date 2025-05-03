@@ -27,5 +27,9 @@ public interface AccommodationService {
 
     List<Accommodation> search(String name, String category, Long hostId, Integer numRooms);
 
+    void refreshMaterializedView();
+
+
+
 
 }

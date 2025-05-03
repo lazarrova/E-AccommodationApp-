@@ -32,5 +32,23 @@ public record DisplayHostDto(
         return new Host(name, surname, country);
     }
 
+    @Override
+    public Long id() {
+        return id;
+    }
 
+    @Override
+    public String name() {
+        return name;
+    }
+
+    @Override
+    public String surname() {
+        return surname;
+    }
+
+    @Override
+    public Long country() {
+        return country;
+    }
 }

@@ -6,8 +6,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import mk.ukim.finki.emt.rent_room_application.dto.CreateAccomodationDto;
 import mk.ukim.finki.emt.rent_room_application.dto.CreateReviewDto;
 import mk.ukim.finki.emt.rent_room_application.dto.DisplayAccomodationDto;
-import mk.ukim.finki.emt.rent_room_application.model.domain.Accommodation;
+import mk.ukim.finki.emt.rent_room_application.model.views.AccommodationPerHostView;
+import mk.ukim.finki.emt.rent_room_application.model.views.HostPerCountryView;
+import mk.ukim.finki.emt.rent_room_application.repository.AccommodationPerHostViewRepository;
+import mk.ukim.finki.emt.rent_room_application.repository.HostPerCountryViewRepository;
 import mk.ukim.finki.emt.rent_room_application.service.application.AccommodationApplicationService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +25,12 @@ import java.util.Optional;
 public class AccommodationController {
 
     private final AccommodationApplicationService accommodationApplicationService;
+    private final AccommodationPerHostViewRepository accommodationPerHostViewRepository;
 
-    public AccommodationController(AccommodationApplicationService accommodationApplicationService) {
+    public AccommodationController(AccommodationApplicationService accommodationApplicationService, AccommodationPerHostViewRepository accommodationPerHostViewRepository) {
         this.accommodationApplicationService = accommodationApplicationService;
+
+        this.accommodationPerHostViewRepository = accommodationPerHostViewRepository;
     }
 
     @GetMapping
@@ -76,6 +84,12 @@ public class AccommodationController {
         return accommodationApplicationService.addReview(id, reviewDto);
     }
 
+    @GetMapping("/paginated")
+    public ResponseEntity<Page<DisplayAccomodationDto>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(accommodationApplicationService.findAll(pageable));
+    }
+
+
     @GetMapping("/search")
     @Operation(summary = "Search accommodations by name, category, host, or number of rooms")
     public List<DisplayAccomodationDto> search(
@@ -86,5 +100,13 @@ public class AccommodationController {
     ) {
         return accommodationApplicationService.searchBy(name, category, hostId, numRooms);
     }
+
+    @GetMapping("/by-host")
+    public List<AccommodationPerHostView> getAccommodationsByHost() {
+        return accommodationPerHostViewRepository.findAll();
+    }
+
+
+
 
 }
