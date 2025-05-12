@@ -37,6 +37,9 @@ public class JwtSecurityWebConfig {
         corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000"));
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         corsConfiguration.setAllowedHeaders(List.of("*"));
+        corsConfiguration.setAllowCredentials(true);
+
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;

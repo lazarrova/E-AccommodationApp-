@@ -4,7 +4,7 @@ select h.id         as host_id,
 from host h
          left join
      accommodation a on a.host_id = h.id
-group by h  .id
+group by h  .id;
 
 create materialized view public.hosts_per_countries as
 select c.id         as country_id,

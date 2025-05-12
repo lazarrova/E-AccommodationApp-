@@ -1,16 +1,15 @@
 package mk.ukim.finki.emt.rent_room_application.config.init;
 
-import jakarta.annotation.PostConstruct;
 
+import jakarta.annotation.PostConstruct;
+import mk.ukim.finki.emt.rent_room_application.repository.*;
+import org.springframework.stereotype.Component;
 import mk.ukim.finki.emt.rent_room_application.model.domain.*;
 import mk.ukim.finki.emt.rent_room_application.model.enumerations.Category;
 import mk.ukim.finki.emt.rent_room_application.model.enumerations.Role;
 import mk.ukim.finki.emt.rent_room_application.repository.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class DataHolder {
@@ -79,3 +78,25 @@ public class DataHolder {
     }
 
 }
+
+
+//@Component
+//public class MaterializedViewRefresher {
+//    private final AccommodationPerHostViewRepository accommodationPerHostViewRepository;
+//    private final HostPerCountryViewRepository hostPerCountryViewRepository;
+//
+//    public MaterializedViewRefresher(AccommodationPerHostViewRepository accommodationPerHostViewRepository, HostPerCountryViewRepository hostPerCountryViewRepository) {
+//        this.accommodationPerHostViewRepository = accommodationPerHostViewRepository;
+//        this.hostPerCountryViewRepository = hostPerCountryViewRepository;
+//    }
+//
+//
+//    @PostConstruct
+//    public void init() {
+//        accommodationPerHostViewRepository.refreshMaterializedView();
+//        hostPerCountryViewRepository.refreshMaterializedView();
+//    }
+//}
+//
+
+

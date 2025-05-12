@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface HostPerCountryViewRepository extends JpaRepository<HostPerCountryView, Long> {
 
@@ -15,4 +17,7 @@ public interface HostPerCountryViewRepository extends JpaRepository<HostPerCount
     @Modifying(clearAutomatically = true)
     @Query(value = "REFRESH MATERIALIZED VIEW public.hosts_per_countries", nativeQuery = true)
     void refreshMaterializedView();
+
+    @Override
+    List<HostPerCountryView> findAll();
 }

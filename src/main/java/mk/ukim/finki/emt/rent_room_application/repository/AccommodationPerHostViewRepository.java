@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @Repository
 public interface AccommodationPerHostViewRepository
@@ -17,6 +19,7 @@ public interface AccommodationPerHostViewRepository
    @Query(value = "REFRESH MATERIALIZED VIEW public.accommodations_per_hosts", nativeQuery = true)
     void refreshMaterializedView();
 
-
+    @Override
+    List<AccommodationPerHostView> findAll();
 
 }
